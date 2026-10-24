@@ -35,4 +35,4 @@ jobs:
             sleep "$((target_epoch - now_epoch))"
           fi
 
-          node openkey-reserve.js --days-from-now 7 --time 18:30 --yes
+          node openkey-reserve.js --days-from-now 6 --time 18:30 --yes
