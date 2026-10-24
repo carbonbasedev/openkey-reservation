@@ -2,8 +2,9 @@ name: Reserve Thursday Padel
 
 on:
   schedule:
-    # Thursday 00:00 Argentina = 03:00 UTC
-    - cron: '0 3 * * 4'
+    - cron: '0 0 * * 4'
+      timezone: 'America/Argentina/Cordoba'  
+      
   workflow_dispatch:
 
 jobs:
