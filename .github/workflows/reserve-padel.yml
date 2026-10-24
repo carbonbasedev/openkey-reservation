@@ -2,7 +2,7 @@ name: Reserve Thursday Padel
 
 on:
   schedule:
-    - cron: '0 0 * * 6'
+    - cron: '1 0 * * 0'
       timezone: 'America/Argentina/Cordoba'  
       
   workflow_dispatch:
@@ -25,14 +25,4 @@ jobs:
           OPENKEY_PASSWORD: ${{ secrets.OPENKEY_PASSWORD }}
           OPENKEY_ACCOUNT_ID: '299'
         run: |
-          # Single attempt only; NO retries.
-          # If the runner is already alive before 00:00:01, wait for that instant.
-          # If GitHub starts it later, execute once immediately.
-          target="$(date +%Y-%m-%d) 00:00:01"
-          target_epoch="$(date -d "$target" +%s)"
-          now_epoch="$(date +%s)"
-          if [ "$now_epoch" -lt "$target_epoch" ]; then
-            sleep "$((target_epoch - now_epoch))"
-          fi
-
           node openkey-reserve.js --days-from-now 6 --time 18:30 --yes
