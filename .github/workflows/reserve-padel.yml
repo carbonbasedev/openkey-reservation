@@ -2,7 +2,7 @@ name: Reserve Thursday Padel
 
 on:
   schedule:
-    - cron: '0 0 * * 5'
+    - cron: '0 0 * * 0'
       timezone: 'America/Argentina/Cordoba'  
       
   workflow_dispatch:
@@ -25,4 +25,6 @@ jobs:
           OPENKEY_PASSWORD: ${{ secrets.OPENKEY_PASSWORD }}
           OPENKEY_ACCOUNT_ID: '299'
         run: |
+          echo "Hora Argentina: $(TZ=America/Argentina/Cordoba date -Iseconds)"
+          echo "Hora UTC: $(date -u -Iseconds)"
           node openkey-reserve.js --days-from-now 6 --time 18:30 --yes
