@@ -16,3 +16,8 @@ Required GitHub repository secrets:
 
 Place reserve-padel.yml at:
   .github/workflows/reserve-padel.yml
+
+
+export OPENKEY_DOCUMENT='27174161'
+export OPENKEY_PASSWORD='955101'
+export OPENKEY_ACCOUNT_ID='299'
